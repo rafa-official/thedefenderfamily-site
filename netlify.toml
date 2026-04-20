@@ -1,5 +1,5 @@
 [build]
-  command = "npm install --prefer-offline && npx @11ty/eleventy --config=eleventy.config.js"
+  command = "npm install && npx @11ty/eleventy"
   publish = "_site"
 
 [[redirects]]
