@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="article">
+  <!-- Hero -->
+  <header class="article-hero" {% if heroImage %}style="background-image: url('{{ heroImage }}')"{% endif %}>
+    <div class="article-hero-overlay">
+      <div class="container">
+        <div class="article-meta">
+          {% if category %}<span class="article-category">{{ category }}</span>{% endif %}
+          {% if date %}<time class="article-date">{{ date | readableDate }}</time>{% endif %}
+        </div>
+        <h1 class="article-title">{{ title }}</h1>
+        {% if subtitle %}<p class="article-subtitle">{{ subtitle }}</p>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="article-body">
+    <div class="article-content">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <!-- Back link -->
+  <div class="article-footer">
+    <div class="container">
+      <a href="/expeditions/" class="btn btn-dark">&larr; All stories</a>
+    </div>
+  </div>
+</article>

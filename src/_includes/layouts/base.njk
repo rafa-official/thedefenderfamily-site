@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ pageTitle or title }} — {{ site.title }}</title>
+  <meta name="description" content="{{ pageDescription or site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="{{ site.logo }}" alt="The Defender Family" class="nav-logo-img">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/projects/"{% if page.url == '/projects/' %} class="active"{% endif %}>Projects</a></li>
+      <li><a href="/expeditions/"{% if '/expeditions/' in page.url %} class="active"{% endif %}>Expeditions</a></li>
+      <li><a href="/work-with-us/"{% if page.url == '/work-with-us/' %} class="active"{% endif %}>Work with Us</a></li>
+      <li><a href="/about/"{% if page.url == '/about/' %} class="active"{% endif %}>About</a></li>
+      <li><a href="/contact/"{% if page.url == '/contact/' %} class="active"{% endif %}>Contact</a></li>
+    </ul>
+    <a href="/work-with-us/" class="nav-cta">Collaborate</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+{% block content %}{{ content | safe }}{% endblock %}
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="/" class="footer-brand">
+          <img src="{{ site.logo }}" alt="The Defender Family" style="height: 28px; width: auto;">
+        </a>
+        <p class="footer-tagline">Family overlanding, documentary photography, and impact storytelling.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/expeditions/">Expeditions</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/work-with-us/">Work with Us</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      The Defender Family &copy; All Rights Reserved
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+  this.classList.toggle('active');
+});
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('navToggle').classList.remove('active');
+  });
+});
+if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,54 @@
+---
+layout: layouts/base.njk
+pageTitle: Contact
+pageDescription: Get in touch with The Defender Family.
+permalink: /contact/
+---
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="height: clamp(200px, 35vh, 320px);">
+  <div class="page-hero-bg" style="background-image: url('https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01040339.jpg')"></div>
+  <div class="page-hero-content">
+    <h1>Contact</h1>
+    <p>We'd love to hear from you</p>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-form">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-dark">Send message</button>
+        </div>
+      </form>
+
+      <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-faint);">
+        <p style="color: var(--color-muted); font-size: 0.95rem; margin-bottom: 1rem;">You can also find us on</p>
+        <p>
+          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" style="color: var(--color-warm-dark); margin: 0 1rem;">Instagram</a>
+          <a href="{{ site.social.facebook }}" target="_blank" rel="noopener" style="color: var(--color-warm-dark); margin: 0 1rem;">Facebook</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

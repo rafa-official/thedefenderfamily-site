@@ -1,0 +1,51 @@
+---
+layout: layouts/base.njk
+pageTitle: Expeditions
+pageDescription: Tips, trips, and stories from the road — our travel journal.
+permalink: /expeditions/
+---
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01040339.jpg')"></div>
+  <div class="page-hero-content">
+    <h1>Expeditions</h1>
+    <p>Tips, trips, and stories from the road</p>
+  </div>
+</section>
+
+<!-- ARTICLES GRID -->
+<section class="expedition-grid">
+  <div class="container">
+    <div class="expedition-cards">
+      {% for post in collections.expeditions %}
+      <a class="expedition-card fade-up" href="{{ post.url }}">
+        {% if post.data.heroImage %}
+        <img class="expedition-card-img" src="{{ post.data.heroImage }}" alt="{{ post.data.title }}" loading="lazy">
+        {% else %}
+        <img class="expedition-card-img" src="https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01020919-2.jpg" alt="{{ post.data.title }}" loading="lazy">
+        {% endif %}
+        {% if post.data.category %}<div class="expedition-card-category">{{ post.data.category }}</div>{% endif %}
+        <h3>{{ post.data.title }}</h3>
+        <p>{{ post.content | excerpt }}</p>
+        <div class="expedition-card-date">{{ post.data.date | readableDate }}</div>
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if collections.expeditions.length == 0 %}
+    <div style="text-align: center; padding: 4rem 0;">
+      <p style="color: var(--color-muted); font-size: 1.1rem;">New stories coming soon. Follow us on <a href="{{ site.social.instagram }}" style="color: var(--color-warm-dark); text-decoration: underline;">Instagram</a> for updates.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Let's build something<br>worth remembering</h2>
+    <p>We collaborate with destinations, hospitality brands, NGOs, cultural initiatives, and purpose-driven projects that want storytelling with depth, beauty, and real-world perspective.</p>
+    <a href="/work-with-us/" class="btn btn-dark">Start a collaboration</a>
+  </div>
+</section>
