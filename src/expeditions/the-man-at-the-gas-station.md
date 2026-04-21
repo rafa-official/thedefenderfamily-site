@@ -1,10 +1,11 @@
 ---
 layout: layouts/article.njk
-title: "The Man at the Gas Station"
-subtitle: "How a breakdown in central Turkey became one of our most important travel stories"
+title: The Man at the Gas Station
+subtitle: How a breakdown in central Turkey became one of our most important
+  travel stories
 date: 2026-04-15
 category: Expedition
-heroImage: "/images/uploads/the-defender-family-front-runner-chairs.jpg"
+heroImage: /images/uploads/woman-driving-defender.jpg
 tags: expeditions
 ---
 
