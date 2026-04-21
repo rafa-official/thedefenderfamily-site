@@ -5,9 +5,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/static");
 
   eleventyConfig.addCollection("expeditions", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/expeditions/*.md").sort((a, b) => {
-      return new Date(b.data.date) - new Date(a.data.date);
-    });
+    return collectionApi.getFilteredByGlob("src/expeditions/*.md")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => {
+        return new Date(b.data.date) - new Date(a.data.date);
+      });
   });
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {

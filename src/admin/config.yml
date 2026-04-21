@@ -21,5 +21,6 @@ collections:
         widget: "select"
         options: ["Expedition", "Gear & Tips", "Impact", "Documentary"]
       - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Draft", name: "draft", widget: "boolean", default: true }
       - { label: "Tags", name: "tags", widget: "hidden", default: "expeditions" }
       - { label: "Body", name: "body", widget: "markdown" }
