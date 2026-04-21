@@ -85,5 +85,7 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
 }
 </script>
 {% block scripts %}{% endblock %}
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",u=>{if(!u){window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}</script>
 </body>
 </html>
