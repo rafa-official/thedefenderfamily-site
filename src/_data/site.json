@@ -2,8 +2,8 @@
   "title": "The Defender Family",
   "description": "Family overlanding, documentary photography, and impact storytelling — with a professional editorial eye and a human perspective.",
   "url": "https://thedefenderfamily.com",
-  "logo": "https://thedefenderfamily.com/wp-content/uploads/2026/02/TDF-Header-Logo_-Black.png",
-  "logoWhite": "https://thedefenderfamily.com/wp-content/uploads/2026/02/TDF-Round-Logo_White_Background-1.png",
+  "logo": "/images/uploads/TDF-Header-Logo_-Black.png",
+  "logoWhite": "/images/uploads/TDF-Round-Logo_White_Background-1.png",
   "social": {
     "instagram": "https://www.instagram.com/thedefenderfamily",
     "facebook": "https://www.facebook.com/thedefenderfamily"

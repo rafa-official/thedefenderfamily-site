@@ -83,7 +83,7 @@ a { color: inherit; text-decoration: none; }
 /* ── HERO ─────────────────────────────────── */
 
 .hero {
-  margin-top: 64px; position: relative; height: clamp(500px, 80vh, 800px);
+  margin-top: 64px; position: relative; height: calc(100vh - 64px); min-height: 500px;
   overflow: hidden; display: flex; align-items: flex-end;
 }
 .hero-bg {
@@ -232,7 +232,7 @@ a { color: inherit; text-decoration: none; }
 /* ── PAGE HERO (inner pages) ──────────────── */
 
 .page-hero {
-  margin-top: 64px; position: relative; height: clamp(300px, 50vh, 480px);
+  margin-top: 64px; position: relative; height: 60vh; min-height: 350px;
   overflow: hidden; display: flex; align-items: flex-end;
 }
 .page-hero-bg {
@@ -407,11 +407,51 @@ a { color: inherit; text-decoration: none; }
 .footer { padding: 3rem 0 2rem; border-top: 1px solid var(--color-faint); }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; }
 .footer-brand { display: inline-block; margin-bottom: 0.75rem; }
+.footer-brand img { height: 48px; width: auto; }
 .footer-tagline { font-size: 0.85rem; color: var(--color-muted); max-width: 280px; }
 .footer-links { list-style: none; display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .footer-links a { font-size: 0.85rem; color: var(--color-muted); transition: color 0.2s; }
 .footer-links a:hover { color: var(--color-ink); }
 .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-faint); font-size: 0.75rem; color: var(--color-muted); text-align: center; }
+
+
+/* ── RAFA STORY STEPS ──────────────────────── */
+
+.story-steps { padding: 0 0 clamp(3rem, 6vw, 5rem); }
+.story-step {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem);
+  align-items: center; margin-bottom: clamp(2rem, 4vw, 3rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-faint);
+}
+.story-step:last-child { border-bottom: none; }
+.story-step:nth-child(even) .story-step-image { order: 2; }
+.story-step-image img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+.story-step-num {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
+  color: var(--color-warm); margin-bottom: 0.75rem;
+}
+.story-step h3 {
+  font-family: var(--font-display); font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  font-weight: 400; margin-bottom: 0.5rem;
+}
+.story-step-when {
+  font-size: 0.85rem; font-weight: 500; color: var(--color-warm-dark);
+  margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.story-step p:last-child { color: var(--color-muted); font-size: 1.05rem; line-height: 1.7; }
+@media (max-width: 768px) {
+  .story-step { grid-template-columns: 1fr; }
+  .story-step:nth-child(even) .story-step-image { order: 0; }
+}
+
+
+/* ── HERO LOGO ────────────────────────────── */
+
+.hero-logo {
+  width: clamp(80px, 12vw, 120px); height: auto;
+  margin-bottom: 1.5rem; opacity: 0.9;
+}
 
 
 /* ── ANIMATIONS ───────────────────────────── */

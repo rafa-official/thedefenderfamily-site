@@ -41,7 +41,7 @@
     <div class="footer-inner">
       <div>
         <a href="/" class="footer-brand">
-          <img src="{{ site.logo }}" alt="The Defender Family" style="height: 28px; width: auto;">
+          <img src="{{ site.logo }}" alt="The Defender Family">
         </a>
         <p class="footer-tagline">Family overlanding, documentary photography, and impact storytelling.</p>
       </div>
@@ -49,6 +49,7 @@
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/expeditions/">Expeditions</a></li>
         <li><a href="/about/">About</a></li>
+        <li><a href="/rafa-lanus/">Rafa Lanús</a></li>
         <li><a href="/work-with-us/">Work with Us</a></li>
         <li><a href="/contact/">Contact</a></li>
         <li><a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
@@ -86,6 +87,6 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
 </script>
 {% block scripts %}{% endblock %}
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",u=>{if(!u){window.netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}</script>
+<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/"})}})}</script>
 </body>
 </html>

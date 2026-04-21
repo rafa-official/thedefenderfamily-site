@@ -4,7 +4,7 @@ title: "The Man at the Gas Station"
 subtitle: "How a breakdown in central Turkey became one of our most important travel stories"
 date: 2026-04-15
 category: Expedition
-heroImage: "https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01020919-2.jpg"
+heroImage: "/images/uploads/the-defender-family-front-runner-chairs.jpg"
 tags: expeditions
 ---
 
@@ -16,7 +16,7 @@ At 3pm we got back on the road.
 
 Two minutes later, a violent metallic noise exploded from under the car.
 
-![The Defender on the road in Turkey](https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01020942.jpg)
+![The Defender on the road in Turkey](/images/uploads/girl-wearing-patagonia-cap-in-a-car.jpg)
 
 I pulled over. The Defender wouldn't move. I engaged low range. It moved again, slowly, but something was very wrong. I drove back to the gas station. No one spoke English, Spanish, Italian, or Catalan. The language barrier was total. We could not read tone or intention.
 
@@ -54,7 +54,7 @@ We all got out of the vehicles, and he said, "You are a family. I cannot leave y
 
 Mariella and I looked at each other.
 
-![Family travel moment](https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01090516.jpg)
+![Family travel moment](/images/uploads/mother-and-daugther-seeing-each-other.jpg)
 
 "My son Mete, 20 years old, will go in the car with you and guide you." They spoke Turkish to each other. We understood nothing.
 
@@ -104,7 +104,7 @@ A few weeks ago, almost two years later, a message arrived on my WhatsApp. A pic
 
 "Thinking of you. I hope the family is well."
 
-![The Defender at sunset](https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01000072.jpg)
+![The Defender at sunset](/images/uploads/kings-charles-spaniel-argentina.jpg)
 
 On the road, problems will come. Plans will break. You will not always understand the language around you. But if you stay calm, trust your team, and lean into uncertainty instead of running from it, something else appears.
 

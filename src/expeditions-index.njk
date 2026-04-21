@@ -7,7 +7,7 @@ permalink: /expeditions/
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image: url('https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01040339.jpg')"></div>
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/rafa-lanus-defender-greece.jpg')"></div>
   <div class="page-hero-content">
     <h1>Expeditions</h1>
     <p>Tips, trips, and stories from the road</p>
@@ -23,7 +23,7 @@ permalink: /expeditions/
         {% if post.data.heroImage %}
         <img class="expedition-card-img" src="{{ post.data.heroImage }}" alt="{{ post.data.title }}" loading="lazy">
         {% else %}
-        <img class="expedition-card-img" src="https://thedefenderfamily.com/wp-content/uploads/2026/02/DO01020919-2.jpg" alt="{{ post.data.title }}" loading="lazy">
+        <img class="expedition-card-img" src="/images/uploads/the-defender-family-front-runner-chairs.jpg" alt="{{ post.data.title }}" loading="lazy">
         {% endif %}
         {% if post.data.category %}<div class="expedition-card-category">{{ post.data.category }}</div>{% endif %}
         <h3>{{ post.data.title }}</h3>
