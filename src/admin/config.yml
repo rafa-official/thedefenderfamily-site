@@ -21,6 +21,7 @@ collections:
         widget: "select"
         options: ["Expedition", "Gear & Tips", "Impact", "Documentary"]
       - { label: "Hero Image", name: "heroImage", widget: "image" }
+      - { label: "Hero Image Alt Text", name: "heroImageAlt", widget: "string", required: false, hint: "Describe the image for SEO and accessibility" }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
       - { label: "Tags", name: "tags", widget: "hidden", default: "expeditions" }
       - { label: "Body", name: "body", widget: "markdown" }
