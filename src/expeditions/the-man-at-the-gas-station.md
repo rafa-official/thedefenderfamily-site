@@ -8,7 +8,6 @@ category: Expedition
 heroImage: /images/uploads/woman-driving-defender.jpg
 tags: expeditions
 ---
-
 That morning we woke up in Cappadocia at dawn. Hot air balloons rising in silence. It was the farthest point we had reached from Barcelona on that trip. From there, we would slowly make our way back home through Bulgaria and Transylvania. But not before passing by the stunning Turkish Riviera. Long roads ahead. A simple plan.
 
 The Defender was running well. We were towing a trailer kindly lent to us by a Turkish company, Crawler. The road that day was easy. We stopped for lunch in Sarıoğlan, at a small restaurant near the gas station at the main intersection. The usual ritual: kebab, tea, and the famous Turkish ice cream show, where the vendor keeps "giving" you the cone but never actually lets you take it. Sophie was laughing. Everything felt light.
@@ -17,7 +16,7 @@ At 3pm we got back on the road.
 
 Two minutes later, a violent metallic noise exploded from under the car.
 
-![The Defender on the road in Turkey](/images/uploads/girl-wearing-patagonia-cap-in-a-car.jpg)
+![The Defender on the road in Turkey](/images/uploads/4x4-tracks.jpg)
 
 I pulled over. The Defender wouldn't move. I engaged low range. It moved again, slowly, but something was very wrong. I drove back to the gas station. No one spoke English, Spanish, Italian, or Catalan. The language barrier was total. We could not read tone or intention.
 
@@ -55,7 +54,7 @@ We all got out of the vehicles, and he said, "You are a family. I cannot leave y
 
 Mariella and I looked at each other.
 
-![Family travel moment](/images/uploads/mother-and-daugther-seeing-each-other.jpg)
+![Family travel moment](/images/uploads/land-rover-defender-overlander_002.jpg)
 
 "My son Mete, 20 years old, will go in the car with you and guide you." They spoke Turkish to each other. We understood nothing.
 
@@ -105,7 +104,7 @@ A few weeks ago, almost two years later, a message arrived on my WhatsApp. A pic
 
 "Thinking of you. I hope the family is well."
 
-![The Defender at sunset](/images/uploads/kings-charles-spaniel-argentina.jpg)
+![The Defender at sunset](/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg)
 
 On the road, problems will come. Plans will break. You will not always understand the language around you. But if you stay calm, trust your team, and lean into uncertainty instead of running from it, something else appears.
 
