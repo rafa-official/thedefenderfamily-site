@@ -5,7 +5,7 @@ subtitle: How a breakdown in central Turkey became one of our most important
   travel stories
 date: 2026-04-15
 category: Expedition
-heroImage: /images/uploads/woman-driving-defender.jpg
+heroImage: /images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg
 tags: expeditions
 ---
 That morning we woke up in Cappadocia at dawn. Hot air balloons rising in silence. It was the farthest point we had reached from Barcelona on that trip. From there, we would slowly make our way back home through Bulgaria and Transylvania. But not before passing by the stunning Turkish Riviera. Long roads ahead. A simple plan.
