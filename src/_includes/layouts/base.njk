@@ -42,16 +42,16 @@
     <div class="footer-inner">
       <div>
         <a href="/" class="footer-brand">
-          <img src="{{ site.logo }}" alt="The Defender Family">
+          <img src="/images/uploads/TDF-Site-Icon.png" alt="The Defender Family">
         </a>
         <p class="footer-tagline">Family overlanding, documentary photography, and impact storytelling.</p>
       </div>
       <ul class="footer-links">
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/expeditions/">Expeditions</a></li>
+        <li><a href="/work-with-us/">Work with Us</a></li>
         <li><a href="/about/">About</a></li>
         <li><a href="/rafa-lanus/">Rafa Lanús</a></li>
-        <li><a href="/work-with-us/">Work with Us</a></li>
         <li><a href="/contact/">Contact</a></li>
         <li><a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
         <li><a href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a></li>
@@ -85,6 +85,43 @@ if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 }
+
+// ── PARALLAX: story step images (Rafa Lanús page) ──
+function initStoryParallax() {
+  if (window.innerWidth <= 768) return;
+  const stepImages = document.querySelectorAll('.story-step-image img');
+  if (!stepImages.length) return;
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    stepImages.forEach(img => {
+      const rect = img.closest('.story-step-image').getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      const elementCenter = rect.top + rect.height / 2;
+      const distanceFromCenter = elementCenter - viewportCenter;
+      const parallaxOffset = distanceFromCenter * 0.12;
+      img.style.transform = `translateY(${parallaxOffset}px)`;
+    });
+  }, { passive: true });
+}
+
+// ── PARALLAX: full-bleed section breaks (.parallax-section) ──
+function initSectionParallax() {
+  if (window.innerWidth <= 768) return;
+  const parallaxBgs = document.querySelectorAll('.parallax-section .parallax-bg');
+  if (!parallaxBgs.length) return;
+  window.addEventListener('scroll', () => {
+    parallaxBgs.forEach(bg => {
+      const rect = bg.closest('.parallax-section').getBoundingClientRect();
+      const offset = rect.top * 0.25;
+      bg.style.transform = `translateY(${offset}px)`;
+    });
+  }, { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initStoryParallax();
+  initSectionParallax();
+});
 </script>
 {% block scripts %}{% endblock %}
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
