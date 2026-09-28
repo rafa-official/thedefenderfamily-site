@@ -100,8 +100,9 @@ Notes on fields and values:
 
 - **Tracked in git, in `src/images/uploads/`:** `hero-desktop.mp4` (22 MB), `hero-mobile.mp4` (7.2 MB), `Trophy VR.mp4` (3.7 MB), `the-defender-family-open-graph.jpg` (default OG image) and `the-defender-family-front-runner-chairs.jpg` (story-card fallback).
 - `hero-desktop.mp4`, the OG image and the chairs image were untracked until 2026-09-28, when they were copied from `_site/` into `src/` and committed. A fresh clone plus build now recreates them.
-- **The repo is still not self-sufficient for images.** 62 other referenced image files (about 25 MB) exist only in `_site/images/uploads/`, and 2 exist nowhere on disk. See section 16, item 1. Do not delete or rebuild `_site/` from scratch until that is resolved.
-- GitHub rejects files over 100 MB and warns above 50 MB. The largest video is 22 MB, so there is room, but a new hero video near 50 MB would need Git LFS or hosting elsewhere.
+- **All images in `_site/images/uploads/` are now in `src/images/uploads/` and tracked** (80 files, about 31 MB, copied 2026-09-28 and committed as `87bc8b0`). The build now prints one distinct `[image] Could not process:` warning, for `defender-trophy-finalist-europe-2026.jpg`. Two referenced files still exist nowhere on disk: `defender-trophy-finalist-europe-2026.jpg` and `camel-trophy-poster-90.jpg` (see section 16, item 1). Their `.webp` versions are tracked.
+- Some of the 80 copied files are not referenced by any page (for example `Machu_Picchu66.jpg` and `PHOTO-2023-04-07-17-07-54.jpg`); they were copied because they were on the server build.
+- **Size against GitHub limits (2026-09-28):** the largest tracked file is 22 MB (limits: 50 MB warning, 100 MB rejection per file). The local `.git` folder is about 215 MB, and `src/images/uploads` is about 91 MB. GitHub recommends keeping a repository under 1 GB, so there is room. A new hero video near 50 MB would need Git LFS or hosting elsewhere. Every re-saved or re-exported image adds a new full copy to history, so avoid committing the same photo repeatedly.
 
 ## 8. Deployment
 
@@ -208,7 +209,7 @@ Where it is used: the story cards on `/stories/`, related stories and tag pages,
 
 How the `.webp` files are made: the old cheat sheet points to `https://squoosh.app/editor` as the JPG → WebP converter. **Confirm: Rafa** the quality and size settings used, and whether any other tool is used.
 
-**Current gap:** all four story hero `.webp` files, and several of the page-hero `.webp` files, exist only in `_site/`, not in `src/`. See section 16, item 1.
+**Current gap:** the `.webp` files for the story heroes and page heroes are now tracked in `src/`. The exceptions are the two missing originals in section 16, item 1.
 
 ### Making images lighter
 
@@ -313,7 +314,7 @@ Rationale is only listed where the repo states it. Everything else is marked **C
 - **Confirm: Rafa** whether Search Console is checked and what to look at there.
 
 **Quarterly**
-- Prove the repo is self-sufficient: `git clone` into a scratch folder, `npm install`, `npm run build`, and compare the result with the live site (`diff -r` against `_site/`, or spot-check images and both hero videos). This catches files that exist only on your disk or server (section 16, item 1).
+- Prove the repo is self-sufficient: `git clone` into a scratch folder, `npm install`, `npm run build`, and compare the result with the live site (`diff -r` against `_site/`, or spot-check images and both hero videos). This catches files that exist only on your disk or server, as happened with the images fixed on 2026-09-28.
 - Update dependencies **within v2**: `npm update`, rebuild, compare the output, then commit `package-lock.json`.
 - Review `npm audit`; the current high-severity findings come through `sharp` in `@11ty/eleventy-img` (section 16, item 10).
 - Check the Node version. This machine runs Node 25, an odd-numbered "Current" release that never becomes LTS; Eleventy 2.0.1 declares `node >=14`. **Confirm: Rafa** whether you want to move to an LTS release.
@@ -340,7 +341,11 @@ Rationale is only listed where the repo states it. Everything else is marked **C
 
 Known gaps, most serious first.
 
-1. **62 referenced images exist only in `_site/`, not in `src/` or git (about 25 MB), and 2 exist nowhere.** The build prints 35 `[image] Could not process:` lines (18 distinct images, on every build). The site works today only because `_site/` is never cleaned and still holds those files. Affected: all four story hero `.webp` files; `.webp` files for the 404 page, the mountain image and the rooftop-tent image; and many `.jpg` photos across the site (to list them, run `npm run build 2>&1 | grep 'Could not process'`; images referenced from raw CSS or `<img>` tags produce no warning, so also compare `src/images/uploads/` with `_site/images/uploads/`). Referenced but present nowhere: `defender-trophy-finalist-europe-2026.jpg` (its `.webp` is in `_site/`; it is the hero of "Defender is a verb") and `camel-trophy-poster-90.jpg`. Consequences: a fresh clone builds a broken site, deleting `_site/` loses the images, and a Mirror deploy of a rebuilt folder would delete them from the server. Fix: copy the missing files from `_site/images/uploads/` into `src/images/uploads/`, restore the two missing `.jpg` files from your originals (**Confirm: Rafa** where they are), rebuild until there are no warnings, commit and push.
+1. **Two referenced images exist nowhere on disk** (resolved for the other 80). On 2026-09-28 all 80 files that existed only in `_site/images/uploads/` were copied into `src/images/uploads/` and committed (`87bc8b0`). Still missing:
+   - `defender-trophy-finalist-europe-2026.jpg`: used as `heroImage` and `ogImage` of "Defender is a verb", in its body, and on `/defender-trophy-concept/`. Its `.webp` is now tracked, but the `{% image %}` shortcode needs the `.jpg` (4 build warnings), and social sharing needs a JPG for the OG image.
+   - `camel-trophy-poster-90.jpg`: used in the body of "Defender is a verb" as a plain Markdown image, so it produces no build warning and shows a broken image. Its `.webp` is tracked.
+   **Confirm: Rafa** where the originals are. Once found, put them in `src/images/uploads/`, rebuild until there are no warnings, then commit, push and deploy.
+   Note: when `_site/` is rebuilt, images referenced only by raw CSS, `<img>` tags or Markdown never warn, so periodically compare `src/images/uploads/` with the references.
 2. **No Article JSON-LD in `article.njk`.** Story pages have no structured data. JSON-LD exists only in `project.njk` and `work-with-us.njk`.
 3. **One-way hreflang.** `src/es/historias.njk` lists `/stories/` as its English alternate, but `/stories/` no longer lists `/historias/` (removed 2026-09-28 because it is a placeholder). Google expects hreflang to be reciprocal. Decide: remove `translations` from `es/historias.njk` too, or add reciprocal links once real Spanish stories exist.
 4. **`/historias/` breaks the `/es/` pattern.** Every other Spanish page is under `/es/`.
