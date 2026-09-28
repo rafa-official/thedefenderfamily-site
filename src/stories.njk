@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+title: "Stories — Family Overlanding Tales from the Road"
+description: "Travels, field notes, and real-life moments from the road. Family overlanding journeys, breakdowns, borders, and unexpected hospitality — from the driver's seat of a Land Rover Defender."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "Land Rover Defender with rooftop tent driving a dirt road at sunset"
+permalink: /stories/
+priority: "0.7"
+changefreq: "weekly"
+lang: "en"
+translations:
+  - { lang: "es", url: "/historias/" }
+defaultUrl: "/stories/"
+---
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg'); background-image: image-set(url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.webp') type('image/webp'), url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg') type('image/jpeg'));"></div>
+  <div class="page-hero-content">
+    <h1>Stories from the Field</h1>
+    <p>Real journeys, real people, real road. This is how we tell a story when no one's given us a brief.</p>
+  </div>
+</section>
+
+<!-- ARTICLES GRID -->
+<section class="expedition-grid">
+  <div class="container">
+    <div class="expedition-cards">
+      {% for post in collections.stories %}
+      <a class="expedition-card fade-up" href="{{ post.url }}">
+        {% if post.data.heroImage %}
+        {% image post.data.heroImage, post.data.title, "lazy", "(max-width: 768px) 100vw, 400px", "expedition-card-img" %}
+        {% else %}
+        {% image "/images/uploads/the-defender-family-front-runner-chairs.jpg", post.data.title, "lazy", "(max-width: 768px) 100vw, 400px", "expedition-card-img" %}
+        {% endif %}
+        <h3>{{ post.data.title }}</h3>
+        {% if post.data.category %}<div class="expedition-card-category">{{ post.data.category }}</div>{% endif %}
+        {% if post.data.author %}<div class="expedition-card-author">By {{ post.data.author }}</div>{% endif %}
+        <div class="expedition-card-date">{{ post.data.date | readableDate }}</div>
+        {% if post.data.subtitle %}<p>{{ post.data.subtitle }}</p>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if collections.stories.length == 0 %}
+    <div style="text-align: center; padding: 4rem 0;">
+      <p style="color: var(--color-muted); font-size: 1.1rem;">New stories coming soon. Follow us on <a href="{{ site.social.instagram }}" style="color: var(--color-warm-dark); text-decoration: underline;">Instagram</a> for updates.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section class="instagram-feed-section">
+  <div class="container">
+    <p class="section-label">From the field</p>
+    <h2 class="section-heading">Follow the journey</h2>
+    <p class="instagram-sub">Day-to-day from the road, the field, and everywhere in between.</p>
+
+    <behold-widget feed-id="ZRRFuff4HiLuRR0ujn3l"></behold-widget>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
+
+    <div class="instagram-cta">
+      <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="btn btn-outline">Follow @thedefenderfamily →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Let's build something<br>worth remembering</h2>
+    <p>If reading this made you think of a place, a project, or a story that deserves the same treatment, that's usually a good sign.</p>
+    <a href="/contact/" class="btn btn-dark">Get in touch</a>
+  </div>
+</section>

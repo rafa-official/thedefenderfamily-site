@@ -1,13 +1,20 @@
 ---
 layout: layouts/base.njk
-pageTitle: Contact
-pageDescription: Get in touch with The Defender Family.
+title: "Contact The Defender Family — Start a Collaboration"
+description: "Start a collaboration with The Defender Family. Travel storytelling, documentary photography, and impact projects for brands, destinations, and NGOs."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "The Defender Family — storytelling studio"
 permalink: /contact/
+priority: "0.5"
+lang: "en"
+translations:
+  - { lang: "es", url: "/es/contacto/" }
+defaultUrl: "/contact/"
 ---
 
 <!-- PAGE HERO -->
-<section class="page-hero" style="height: clamp(200px, 35vh, 320px);">
-  <div class="page-hero-bg" style="background-image: url('/images/uploads/land-rover-defender-in-albanian-alps_002.jpg')"></div>
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/land-rover-defender-in-albanian-alps_002.jpg'); background-image: image-set(url('/images/uploads/land-rover-defender-in-albanian-alps_002.webp') type('image/webp'), url('/images/uploads/land-rover-defender-in-albanian-alps_002.jpg') type('image/jpeg'));"></div>
   <div class="page-hero-content">
     <h1>Hola.</h1>
     <p>Don't be shy — reach out.</p>
@@ -18,9 +25,10 @@ permalink: /contact/
 <section class="contact-section">
   <div class="container">
     <div class="contact-form">
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <p class="contact-form-lead">Tell us about your place, your project, or your idea. Even a rough thought is a good starting point.</p>
+      <form id="contact-form" action="https://formspree.io/f/xjgjddlw" method="POST">
+        <input type="hidden" name="_subject" value="New message from The Defender Family website">
+        <input type="text" name="_gotcha" style="display:none" aria-hidden="true">
 
         <div class="form-group">
           <label for="name">Name</label>
@@ -42,13 +50,34 @@ permalink: /contact/
         </div>
       </form>
 
-      <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-faint);">
-        <p style="color: var(--color-muted); font-size: 0.95rem; margin-bottom: 1rem;">You can also find us on</p>
-        <p>
-          <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" style="color: var(--color-warm-dark); margin: 0 1rem;">Instagram</a>
-          <a href="{{ site.social.facebook }}" target="_blank" rel="noopener" style="color: var(--color-warm-dark); margin: 0 1rem;">Facebook</a>
-        </p>
-      </div>
+      <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            window.location.href = '/thank-you/';
+          } else {
+            btn.textContent = 'Send message';
+            btn.disabled = false;
+            btn.insertAdjacentHTML('afterend', '<p style="color:red;margin-top:0.75rem;">Something went wrong — please try again.</p>');
+          }
+        } catch(err) {
+          btn.textContent = 'Send message';
+          btn.disabled = false;
+          btn.insertAdjacentHTML('afterend', '<p style="color:red;margin-top:0.75rem;">Something went wrong — please try again.</p>');
+        }
+      });
+      </script>
+
     </div>
   </div>
 </section>

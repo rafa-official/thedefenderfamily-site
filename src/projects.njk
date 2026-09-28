@@ -1,29 +1,37 @@
 ---
 layout: layouts/base.njk
-pageTitle: Projects
-pageDescription: Three ways we tell the stories — travel, impact, and professional photography.
+title: "Projects — Travel, Documentary & Impact Photography"
+description: "Three pillars of work: cinematic family travel stories, NGO and impact documentation, and editorial photography — with professional field logistics and post-production."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "Rafa Lanús on assignment in the field"
 permalink: /projects/
+priority: "0.8"
+lang: "en"
+translations:
+  - { lang: "es", url: "/es/proyectos/" }
+defaultUrl: "/projects/"
 ---
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image: url('/images/uploads/the-defender-family-sunrise-moment.jpg')"></div>
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/the-defender-family-sunrise-moment.jpg'); background-image: image-set(url('/images/uploads/the-defender-family-sunrise-moment.webp') type('image/webp'), url('/images/uploads/the-defender-family-sunrise-moment.jpg') type('image/jpeg'));"></div>
   <div class="page-hero-content">
     <h1>Projects</h1>
-    <p>Three ways we tell the stories</p>
+    <p>The work starts before the trip.</p>
   </div>
 </section>
 
 <!-- INTRO -->
-<section class="side-section">
+<section class="side-section" style="padding-bottom: clamp(1.5rem, 3vw, 2.5rem);">
   <div class="container">
-    <div class="side-inner fade-up">
+    <div class="side-inner">
       <div class="side-text">
-        <h2>A family-led storytelling studio. Not a weekend content dump.</h2>
-        <p>We produce cinematic travel and impact stories with professional photography, real field logistics, and post-production capacity built for brands, destinations, and purpose-driven partners.</p>
+        <h2>Not a portfolio. A track record.</h2>
+        <p>Some projects start with a commission. Some start with access. Some start with a phone call and a rough idea that turns into something neither side expected.</p>
+        <p>What they all have in common: we went somewhere properly, stayed long enough to find the real story, and came back with three things instead of one.</p>
       </div>
       <div class="side-image">
-        <img src="/images/uploads/overlander-family-with-a-land-rover-defender-sunset_UK_023.jpg" alt="On location" loading="lazy">
+        {% image "/images/uploads/overlander-family-with-a-land-rover-defender-sunset_UK_023.jpg", "On location" %}
       </div>
     </div>
   </div>
@@ -32,26 +40,57 @@ permalink: /projects/
 <!-- SERVICES -->
 <section class="services">
   <div class="container">
-    <div class="section-label">What we do</div>
-    <h2 class="section-heading">Our three pillars</h2>
+    <div class="section-label">How we work</div>
+    <h2 class="section-heading">Three ways we tell the story</h2>
     <div class="services-grid">
+      <a href="/stories/" class="service-card-link">
+        <div class="service-card fade-up">
+          {% image "/images/uploads/land-rover-defender-explorer-kid.jpg", "Travel storytelling", "lazy", "(max-width: 768px) 100vw, 33vw" %}
+          <div class="service-card-num">01</div>
+          <h3>Travel and Destination Storytelling</h3>
+          <p>For tourism boards, national parks, and hospitality brands that need travel content with real texture. A real family, real logistics, real road. Not a hired crew on a day rate.</p>
+        </div>
+      </a>
+      <a href="/rafa-lanus/" class="service-card-link">
+        <div class="service-card fade-up">
+          {% image "/images/uploads/RL_GuatemalaProject_23.jpg", "Professional photography", "lazy", "(max-width: 768px) 100vw, 33vw" %}
+          <div class="service-card-num">02</div>
+          <h3>Editorial and Documentary Photography</h3>
+          <p>For publishers, cultural institutions, and NGOs that need field photography with depth and institutional sensitivity. Available for commission and editorial licensing.</p>
+        </div>
+      </a>
+      <a href="https://www.realitytelling.com/" class="service-card-link" target="_blank" rel="noopener noreferrer">
       <div class="service-card fade-up">
-        <img src="/images/uploads/land-rover-defender-explorer-kid.jpg" alt="Travel storytelling" loading="lazy">
-        <div class="service-card-num">01</div>
-        <h3>Real life travel stories</h3>
-        <p>Family travel storytelling — cinematic, practical, and honest. Grounded in real travel and everyday adventure, built for audiences who value authenticity.</p>
+          {% image "/images/uploads/Reality_Telling.jpg", "Immersive storytelling", "lazy", "(max-width: 768px) 100vw, 33vw" %}
+          <div class="service-card-num">03</div>
+          <h3>Immersive 360/VR</h3>
+          <p>For destinations and healthcare partners that want a second deliverable from the same operation. Through our impact company <span style="color: var(--color-warm-dark); text-decoration: underline;">Reality Telling</span>, built for clinical use, cultural programmes, and public engagement. One trip, two outputs, two clients.</p>
       </div>
-      <div class="service-card fade-up">
-        <img src="/images/uploads/Reality_Telling.jpg" alt="Impact stories" loading="lazy">
-        <div class="service-card-num">02</div>
-        <h3>Impact stories</h3>
-        <p>Immersive storytelling — emotion, memory, and wellbeing. Through our company <a href="http://www.realitytelling.com" style="color: var(--color-warm-dark); text-decoration: underline;">Reality Telling</a>, we create 360/VR experiences that bring people to places they can't reach.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW A PROJECT WORKS -->
+<section class="how-it-works">
+  <div class="container">
+    <div class="section-label">The process</div>
+    <h2 class="section-heading">How a project works</h2>
+    <div class="how-steps">
+      <div class="how-step fade-up">
+        <div class="how-step-num">01</div>
+        <h3>Before</h3>
+        <p>We arrange access, align the brief, and confirm logistics. The production plan is built before we leave.</p>
       </div>
-      <div class="service-card fade-up">
-        <img src="/images/uploads/RL_GuatemalaProject_23.jpg" alt="Professional photography" loading="lazy">
-        <div class="service-card-num">03</div>
-        <h3>Professional photography</h3>
-        <p>Editorial and documentary work — from spotlight to fieldwork. Portraiture, events, and real-life moments in motion with a professional editorial eye.</p>
+      <div class="how-step fade-up">
+        <div class="how-step-num">02</div>
+        <h3>During</h3>
+        <p>We embed properly. Travel story, editorial photography, and 360/VR captured simultaneously from a single field operation.</p>
+      </div>
+      <div class="how-step fade-up">
+        <div class="how-step-num">03</div>
+        <h3>After</h3>
+        <p>Three deliverables. Travel content for destinations and brands. Photography for editorial and archive. Immersive experiences for healthcare and cultural partners.</p>
       </div>
     </div>
   </div>
@@ -61,7 +100,7 @@ permalink: /projects/
 <section class="cta-band">
   <div class="container">
     <h2>Let's build something<br>worth remembering</h2>
-    <p>We collaborate with destinations, hospitality brands, NGOs, cultural initiatives, and purpose-driven projects that want storytelling with depth, beauty, and real-world perspective.</p>
-    <a href="/work-with-us/" class="btn btn-dark">Start a collaboration</a>
+    <p>Our projects came from a consistent starting point: a place worth going, and access that made the work possible. If that sounds like something you have, reach out.</p>
+    <a href="/contact/" class="btn btn-dark">Start a collaboration</a>
   </div>
 </section>

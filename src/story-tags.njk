@@ -1,0 +1,45 @@
+---
+pagination:
+  data: collections.storiesByTag
+  size: 1
+  alias: tag
+eleventyComputed:
+  title: "'{{ tag }}' Stories — The Defender Family"
+  description: "Stories tagged {{ tag }} — family overlanding, documentary, and field stories from The Defender Family."
+permalink: /stories/tag/{{ tag | slugify }}/
+layout: layouts/base.njk
+eleventyExcludeFromCollections: true
+sitemap: false
+---
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg'); background-image: image-set(url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.webp') type('image/webp'), url('/images/uploads/land-rover-defender-alucab-driving-dirtroad-turkey.jpg') type('image/jpeg'));"></div>
+  <div class="page-hero-content">
+    <h1>{{ tag }}</h1>
+    <p>Stories from the field</p>
+  </div>
+</section>
+
+<section class="expedition-grid">
+  <div class="container">
+    {% set taggedPosts = collections.stories | filterByTag(tag) %}
+    {% if taggedPosts and taggedPosts.length %}
+    <div class="expedition-cards">
+      {% for post in taggedPosts %}
+      <a class="expedition-card" href="{{ post.url }}">
+        {% if post.data.heroImage %}{% image post.data.heroImage, (post.data.heroImageAlt or post.data.title), "lazy", "(max-width: 768px) 100vw, 400px", "expedition-card-img" %}{% endif %}
+        <h3>{{ post.data.title }}</h3>
+        {% if post.data.category %}<div class="expedition-card-category">{{ post.data.category }}</div>{% endif %}
+        {% if post.data.subtitle %}<p>{{ post.data.subtitle }}</p>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color: var(--color-muted); padding: clamp(2rem, 4vw, 4rem) 0;">No stories tagged "{{ tag }}" yet.</p>
+    {% endif %}
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="/stories/" class="btn btn-dark">&larr; All stories</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="article project-case">
+
+  <!-- Hero -->
+  <header class="article-hero" {% if heroImage %}style="background-image: url('{{ heroImage }}');" role="img" aria-label="{{ heroImageAlt or title }}"{% endif %}>
+    <div class="article-hero-overlay">
+      <div class="container">
+        {% if discipline %}<div class="article-meta"><span class="article-category">{{ discipline }}</span></div>{% endif %}
+        <h1 class="article-title">{{ title }}</h1>
+        {% if description %}<p class="article-subtitle">{{ description }}</p>{% endif %}
+        <div class="project-meta-bar">
+          {% if client %}<span><strong>Client:</strong> {{ client }}</span>{% endif %}
+          {% if location %}<span><strong>Location:</strong> {{ location }}</span>{% endif %}
+          {% if year %}<span><strong>Year:</strong> {{ year }}</span>{% endif %}
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <div class="article-body">
+    <div class="article-content">
+      {{ content | safe }}
+    </div>
+  </div>
+
+  <!-- Back link -->
+  <div class="article-footer">
+    <div class="container">
+      <a href="/projects/" class="btn btn-dark">&larr; All projects</a>
+    </div>
+  </div>
+
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": {{ title | dump | safe }},
+  "description": {{ description | dump | safe }},
+  "creator": {
+    "@type": "Person",
+    "name": "Rafa Lanús",
+    "url": "{{ site.url }}/rafa-lanus/"
+  },
+  "dateCreated": "{{ year }}",
+  "contentLocation": {
+    "@type": "Place",
+    "name": {{ location | dump | safe }}
+  },
+  "image": "{{ site.url }}{{ ogImage or heroImage }}",
+  "inLanguage": "{{ lang or 'en' }}"
+}
+</script>

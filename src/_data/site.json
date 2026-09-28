@@ -1,11 +1,20 @@
 {
-  "title": "The Defender Family",
-  "description": "Family overlanding, documentary photography, and impact storytelling — with a professional editorial eye and a human perspective.",
+  "name": "The Defender Family",
+  "shortName": "The Defender Family",
   "url": "https://thedefenderfamily.com",
-  "logo": "/images/uploads/TDF-Header-Logo_-Black.png",
-  "logoWhite": "/images/uploads/TDF-Round-Logo_White_Background-1.png",
+  "locale": "en_US",
+  "defaultTitle": "The Defender Family — Overlanding & Documentary Storytelling",
+  "defaultDescription": "Family-led storytelling studio producing cinematic travel, documentary, and impact stories for destinations, hospitality brands, and NGOs. 25+ years of editorial photography on the road.",
+  "defaultOgImage": "/images/uploads/the-defender-family-open-graph.jpg",
+  "twitterHandle": "",
   "social": {
     "instagram": "https://www.instagram.com/thedefenderfamily",
     "facebook": "https://www.facebook.com/thedefenderfamily"
-  }
+  },
+  "author": {
+    "name": "Rafa Lanús",
+    "url": "https://thedefenderfamily.com/rafa-lanus/",
+    "externalSite": "https://www.rafalanus.com"
+  },
+  "logo": "/images/uploads/TDF-Header-Logo_-Black.png"
 }

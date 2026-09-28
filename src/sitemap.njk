@@ -1,0 +1,25 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for page in collections.all -%}
+  {%- if page.data.eleventyExcludeFromCollections !== true and page.data.sitemap !== false and page.data.draft !== true -%}
+  <url>
+    <loc>{{ site.url }}{{ page.url }}</loc>
+    <lastmod>{{ page.date.toISOString() }}</lastmod>
+    <changefreq>{{ page.data.changefreq or "monthly" }}</changefreq>
+    <priority>{{ page.data.priority or "0.7" }}</priority>
+    {%- if page.data.translations -%}
+      <xhtml:link rel="alternate" hreflang="{{ page.data.lang or 'en' }}" href="{{ site.url }}{{ page.url }}"/>
+      {%- for t in page.data.translations -%}
+      <xhtml:link rel="alternate" hreflang="{{ t.lang }}" href="{{ site.url }}{{ t.url }}"/>
+      {%- endfor -%}
+      <xhtml:link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.data.defaultUrl or page.url }}"/>
+    {%- endif -%}
+  </url>
+  {%- endif -%}
+{%- endfor -%}
+</urlset>

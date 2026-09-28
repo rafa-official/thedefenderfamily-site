@@ -1,79 +1,212 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang or 'en' }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ pageTitle or title }} — {{ site.title }}</title>
-  <meta name="description" content="{{ pageDescription or site.description }}">
+
+  {# ===== SEO META ===== #}
+  {% set pageTitle = title or site.defaultTitle %}
+  {% set pageDescription = description or site.defaultDescription %}
+  {% set pageUrl = site.url + page.url %}
+  {% set pageImage = site.url + (ogImage or site.defaultOgImage) %}
+  {% set pageImageAlt = ogImageAlt or pageTitle %}
+  {% set pageType = ogType or "website" %}
+
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDescription }}">
+  <link rel="canonical" href="{{ pageUrl }}">
+  {% include "partials/hreflang.njk" %}
+
+  {# Open Graph #}
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:type" content="{{ pageType }}">
+  <meta property="og:title" content="{{ pageTitle }}">
+  <meta property="og:description" content="{{ pageDescription }}">
+  <meta property="og:url" content="{{ pageUrl }}">
+  <meta property="og:image" content="{{ pageImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ pageImageAlt }}">
+  <meta property="og:locale" content="{% if lang == 'es' %}es_ES{% else %}en_US{% endif %}">
+  {% if translations %}{% for t in translations %}<meta property="og:locale:alternate" content="{% if t.lang == 'es' %}es_ES{% else %}en_US{% endif %}">{% endfor %}{% endif %}
+
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ pageTitle }}">
+  <meta name="twitter:description" content="{{ pageDescription }}">
+  <meta name="twitter:image" content="{{ pageImage }}">
+  <meta name="twitter:image:alt" content="{{ pageImageAlt }}">
+  {% if site.twitterHandle %}
+  <meta name="twitter:site" content="{{ site.twitterHandle }}">
+  <meta name="twitter:creator" content="{{ site.twitterHandle }}">
+  {% endif %}
+
+  {# Robots — production indexable; staging gets noindex via hostname check; pages can override via robotsOverride #}
+  <meta name="robots" content="{{ robotsOverride or 'index, follow, max-image-preview:large, max-snippet:-1' }}">
+  <script>if(window.location.hostname!=='thedefenderfamily.com'){var r=document.querySelector('meta[name="robots"]');if(r)r.setAttribute('content','noindex, nofollow');}</script>
+
+  {# Favicons — using existing site icon #}
+  <link rel="icon" type="image/png" href="/images/uploads/TDF-Site-Icon.png">
+  <link rel="shortcut icon" href="/images/uploads/TDF-Site-Icon.png">
+  <link rel="apple-touch-icon" href="/images/uploads/TDF-Site-Icon.png">
+  <meta name="theme-color" content="#000000">
+
+  {# Preload LCP image if specified by the page (e.g. video poster on homepage) #}
+  {% if preloadImage %}
+  <link rel="preload" as="image" href="{{ preloadImage }}" fetchpriority="high">
+  {% endif %}
+
+  {# Google Fonts — async (non-blocking) to avoid render delay #}
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/css/style.css">
   {% block head %}{% endblock %}
+
+  {# ── Language auto-redirect — fires once per session on homepage only ── #}
+  <script>
+  (function() {
+    if (sessionStorage.getItem('langRedirected')) return;
+    sessionStorage.setItem('langRedirected', '1');
+    var lang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+    var path = window.location.pathname;
+    if (lang.startsWith('es') && path === '/') {
+      window.location.replace('/es/');
+    } else if (!lang.startsWith('es') && path === '/es/') {
+      window.location.replace('/');
+    }
+  })();
+  </script>
+
+  {# ── Google Analytics — loads only if consent previously granted ── #}
+  <script>
+  if (localStorage.getItem('ga_consent') === 'granted') {
+    var _gas = document.createElement('script');
+    _gas.async = true;
+    _gas.src = 'https://www.googletagmanager.com/gtag/js?id=G-E342XMDLLB';
+    document.head.appendChild(_gas);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E342XMDLLB');
+  }
+  </script>
 </head>
 <body>
 
 <!-- NAV -->
+{% if not minimalNav %}
+
 <nav class="nav">
   <div class="nav-inner">
-    <a href="/" class="nav-logo">
-      <img src="{{ site.logo }}" alt="The Defender Family" class="nav-logo-img">
+    <a href="{% if lang == 'es' %}/es/{% else %}/{% endif %}" class="nav-logo">
+      <img src="{{ site.logo }}" alt="The Defender Family" class="nav-logo-img" width="169" height="90">
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="/projects/"{% if page.url == '/projects/' %} class="active"{% endif %}>Projects</a></li>
-      <li><a href="/expeditions/"{% if '/expeditions/' in page.url %} class="active"{% endif %}>Expeditions</a></li>
-      <li><a href="/work-with-us/"{% if page.url == '/work-with-us/' %} class="active"{% endif %}>Work with Us</a></li>
+      {% if lang == 'es' %}
+      <li><a href="/historias/"{% if page.url == '/historias/' %} class="active"{% endif %}>Historias</a></li>
+      <li><a href="/es/sobre-nosotros/"{% if page.url == '/es/sobre-nosotros/' %} class="active"{% endif %}>Nosotros</a></li>
+      <li><a href="/es/rafa-lanus/"{% if page.url == '/es/rafa-lanus/' %} class="active"{% endif %}>Rafa Lanús</a></li>
+      <li><a href="/es/sophie-a-bordo/"{% if page.url == '/es/sophie-a-bordo/' %} class="active"{% endif %}>Sophie a Bordo</a></li>
+      <li><a href="/es/trabajemos-juntos/"{% if page.url == '/es/trabajemos-juntos/' %} class="active"{% endif %}>Trabajemos</a></li>
+      <li><a href="/es/contacto/"{% if page.url == '/es/contacto/' %} class="active"{% endif %}>Contacto</a></li>
+      {% else %}
+      <li><a href="/stories/"{% if '/stories/' in page.url %} class="active"{% endif %}>Stories</a></li>
       <li><a href="/about/"{% if page.url == '/about/' %} class="active"{% endif %}>About</a></li>
       <li><a href="/rafa-lanus/"{% if page.url == '/rafa-lanus/' %} class="active"{% endif %}>Rafa Lanús</a></li>
+      <li><a href="/sophie-on-board/"{% if page.url == '/sophie-on-board/' %} class="active"{% endif %}>Sophie on Board</a></li>
+      <li><a href="/work-with-us/"{% if page.url == '/work-with-us/' %} class="active"{% endif %}>Work with Us</a></li>
       <li><a href="/contact/"{% if page.url == '/contact/' %} class="active"{% endif %}>Contact</a></li>
+      {% endif %}
+      {% if translations and translations.length %}
+      <li class="nav-lang-item">
+        {% for t in translations %}<a href="{{ t.url }}" lang="{{ t.lang }}" hreflang="{{ t.lang }}">{{ t.lang | upper }}</a>{% endfor %}
+      </li>
+      {% endif %}
     </ul>
-    <a href="/work-with-us/" class="nav-cta">Collaborate</a>
+    {% if translations and translations.length %}
+    <div class="lang-switcher">
+      {% for t in translations %}
+      <a href="{{ t.url }}" class="lang-switcher__link" lang="{{ t.lang }}" hreflang="{{ t.lang }}">{{ t.lang | upper }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if lang == 'es' %}
+    <a href="/es/contacto/" class="nav-cta">Colabora</a>
+    {% else %}
+    <a href="/contact/" class="nav-cta">Collaborate</a>
+    {% endif %}
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
+{% endif %}
 
 <!-- CONTENT -->
 {% block content %}{{ content | safe }}{% endblock %}
 
 <!-- FOOTER -->
+{% if not minimalNav %}
+
 <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <a href="/" class="footer-brand">
-          <img src="/images/uploads/TDF-Site-Icon.png" alt="The Defender Family">
-        </a>
-        <p class="footer-tagline">Family overlanding, documentary photography, and impact storytelling.</p>
-      </div>
-      <ul class="footer-links">
-        <li><a href="/projects/">Projects</a></li>
-        <li><a href="/expeditions/">Expeditions</a></li>
-        <li><a href="/work-with-us/">Work with Us</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/rafa-lanus/">Rafa Lanús</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a></li>
-      </ul>
+  <div class="footer-inner">
+
+    <div class="footer-logo-wrap">
+      <a href="/"><img src="/images/uploads/TDF-Site-Icon.png" alt="The Defender Family" class="footer-logo-img" width="512" height="512"></a>
     </div>
+
+    <p class="footer-tagline">{% if lang == 'es' %}Overlanding en familia. Fotografía documental.<br>Experiencias inmersivas en video 360.{% else %}Family overlanding. Documentary photography.<br>Immersive 360.{% endif %}</p>
+
+    <nav class="footer-nav">
+      {% if lang == 'es' %}
+      <a href="/historias/">Historias</a>
+      <a href="/es/proyectos/">Proyectos</a>
+      <a href="/es/sobre-nosotros/">Nosotros</a>
+      <a href="/es/rafa-lanus/">Rafa Lanús</a>
+      <a href="/es/sophie-a-bordo/">Sophie a Bordo</a>
+      <a href="/es/trabajemos-juntos/">Trabajemos</a>
+      <a href="/es/contacto/">Contacto</a>
+      {% else %}
+      <a href="/stories/">Stories</a>
+      <a href="/projects/">Projects</a>
+      <a href="/about/">About</a>
+      <a href="/rafa-lanus/">Rafa Lanús</a>
+      <a href="/sophie-on-board/">Sophie on Board</a>
+      <a href="/work-with-us/">Work with Us</a>
+      <a href="/contact/">Contact</a>
+      {% endif %}
+    </nav>
+
+    <hr class="footer-rule">
+
     <div class="footer-bottom">
-      The Defender Family &copy; All Rights Reserved
+      <div class="footer-social">
+        <a href="{{ site.social.instagram }}" target="_blank" rel="noopener">Instagram</a>
+        <a href="{{ site.social.facebook }}" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <span>{% if lang == 'es' %}&copy; 2026 The Defender Family. Todos los derechos reservados.{% else %}&copy; 2026 The Defender Family. All Rights Reserved.{% endif %}</span>
     </div>
+
   </div>
 </footer>
+{% endif %}
 
 <script>
-document.getElementById('navToggle').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-  this.classList.toggle('active');
-});
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('open');
-    document.getElementById('navToggle').classList.remove('active');
+var navToggleEl = document.getElementById('navToggle');
+if (navToggleEl) {
+  navToggleEl.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+    this.classList.toggle('active');
   });
-});
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+      document.getElementById('navToggle').classList.remove('active');
+    });
+  });
+}
 if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -118,13 +251,74 @@ function initSectionParallax() {
   }, { passive: true });
 }
 
+// ── ANIMATED STAT COUNTERS (About page) ──
+function animateStats() {
+  const nums = document.querySelectorAll('.stat-num');
+  if (!nums.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target, 10);
+      const duration = 1600;
+      const start = performance.now();
+
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + '+';
+      }
+
+      requestAnimationFrame(tick);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+
+  nums.forEach(el => observer.observe(el));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initStoryParallax();
   initSectionParallax();
+  animateStats();
 });
 </script>
 {% block scripts %}{% endblock %}
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/"})}})}</script>
+
+{# ── Cookie consent banner ── #}
+<div id="cookie-banner" class="cookie-banner" style="display:none" role="dialog" aria-label="Cookie consent">
+  <p>{% if lang == 'es' %}Usamos cookies de analítica para entender cómo los visitantes utilizan este sitio. No compartimos datos con terceros.{% else %}We use analytics cookies to understand how visitors use this site. No data is shared with third parties.{% endif %}</p>
+  <div class="cookie-banner-btns">
+    <button id="cookie-accept" class="cookie-accept">{% if lang == 'es' %}Aceptar{% else %}Accept{% endif %}</button>
+    <button id="cookie-decline" class="cookie-decline">{% if lang == 'es' %}Rechazar{% else %}Decline{% endif %}</button>
+  </div>
+</div>
+<script>
+(function() {
+  if (localStorage.getItem('ga_consent')) return;
+  document.getElementById('cookie-banner').style.display = 'flex';
+
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    localStorage.setItem('ga_consent', 'granted');
+    document.getElementById('cookie-banner').style.display = 'none';
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E342XMDLLB';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E342XMDLLB');
+  });
+
+  document.getElementById('cookie-decline').addEventListener('click', function() {
+    localStorage.setItem('ga_consent', 'denied');
+    document.getElementById('cookie-banner').style.display = 'none';
+  });
+})();
+</script>
 </body>
 </html>

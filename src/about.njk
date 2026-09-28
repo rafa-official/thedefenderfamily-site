@@ -1,55 +1,56 @@
 ---
 layout: layouts/base.njk
-pageTitle: About
-pageDescription: A family looking for experiences — meet Sophie, Mariella, Rafa, and Padme.
+title: "About The Defender Family — A Travel Storytelling Studio"
+description: "Meet Rafa, Mariella, Sophie, and Padme. A multicultural family overlanding across 47+ countries, combining editorial photography with nonprofit leadership and impact storytelling."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "The Defender Family posing together with their Land Rover Defender"
+priority: "0.8"
+lang: "en"
+translations:
+  - { lang: "es", url: "/es/sobre-nosotros/" }
+defaultUrl: "/about/"
 ---
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image: url('/images/uploads/the-defender-family-and-friends-mountain.jpg')"></div>
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/the-defender-family-and-friends-mountain.jpg'); background-image: image-set(url('/images/uploads/the-defender-family-and-friends-mountain.webp') type('image/webp'), url('/images/uploads/the-defender-family-and-friends-mountain.jpg') type('image/jpeg'));"></div>
   <div class="page-hero-content">
     <h1>About us</h1>
     <p>A family looking for experiences</p>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="stats">
+<!-- INTRO -->
+<section class="about-intro">
   <div class="container">
-    <div class="stats-grid">
-      <div>
-        <div class="stat-number">30+</div>
-        <div class="stat-label">Countries</div>
-      </div>
-      <div>
-        <div class="stat-number">50+</div>
-        <div class="stat-label">Trips</div>
-      </div>
-      <div>
-        <div class="stat-number">5</div>
-        <div class="stat-label">Continents</div>
-      </div>
-      <div>
-        <div class="stat-number">25+</div>
-        <div class="stat-label">Yrs experience</div>
-      </div>
-    </div>
+    <h2 class="about-intro-heading">Wild plans,<br class="mobile-br"> grounded hearts</h2>
+    <p class="about-intro-body">We are a family built around travel, photography, creativity, and impact. Sometimes it is overlanding. Sometimes it is flying across the world. But it is always real life, told with intention.</p>
+    <p class="about-intro-body">At home, a single conversation can move through four languages in a matter of minutes. That is not a marketing line: it is simply our way of being in the world.</p>
+    <p class="about-intro-body">And what we started creating on the road found a life beyond the journey and beyond Instagram. Today, it also lives in the work we do for institutions, NGOs, and, through Reality Telling, our social impact company, in hospital rooms, where an immersive 360 video experience can take someone to a place they cannot physically reach.</p>
+    <a href="/work-with-us/" class="btn btn-dark">Work with Us</a>
   </div>
 </section>
 
-<!-- INTRO TEXT -->
-<section class="side-section">
-  <div class="container">
-    <div class="side-inner fade-up">
-      <div class="side-image">
-        <img src="/images/uploads/explorer-family-lake.jpg" alt="The Defender Family" loading="lazy">
-      </div>
-      <div class="side-text">
-        <h2>Wild plans, grounded hearts</h2>
-        <p>We're a family-led storytelling studio built around travel, photography, and impact. Sometimes it's overlanding. Sometimes it's flying across the world. Always it's real life — told with intention.</p>
-        <p>At home, we're multicultural by default — on any given day, one conversation can switch between four languages.</p>
-        <a href="/work-with-us/" class="btn btn-dark">Work with us</a>
-      </div>
+<!-- STATS HERO -->
+<section class="stats-hero">
+  <div class="stats-hero-bg" style="background-image: url('/images/uploads/girl-rooftop-tent-beach.jpg'); background-image: image-set(url('/images/uploads/girl-rooftop-tent-beach.webp') type('image/webp'), url('/images/uploads/girl-rooftop-tent-beach.jpg') type('image/jpeg'));"></div>
+  <div class="stats-hero-fade stats-hero-fade--top"></div>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num" data-target="47">0</span>
+      <span class="stat-label">Countries</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="72">0</span>
+      <span class="stat-label">Trips</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="6">0</span>
+      <span class="stat-label">Continents</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="25">0</span>
+      <span class="stat-label">Yrs of Experience</span>
     </div>
   </div>
 </section>
@@ -61,14 +62,14 @@ pageDescription: A family looking for experiences — meet Sophie, Mariella, Raf
     <!-- Sophie -->
     <div class="family-member fade-up">
       <div class="family-member-image">
-        <img src="/images/uploads/sophie-on-board.jpg" alt="Sophie" loading="lazy">
+        {% image "/images/uploads/sophie-on-board.jpg", "Sophie" %}
       </div>
       <div>
         <div class="family-member-name">Sophie</div>
         <div class="family-member-role">The actress in the making</div>
         <div class="family-member-text">
           <p>Born in Los Angeles and raised between cultures, Sophie is creative, sensitive, and fearless about trying new things. She sings beautifully, dreams of acting, and naturally steps into the "presenter" role when the camera turns on.</p>
-          <p>She speaks four languages and is exploring her own future chapter: <strong>Sophie on Board</strong>.</p>
+          <p>She speaks four languages and is exploring her own future chapter: <a href="/sophie-on-board/" style="color: var(--color-warm-dark); text-decoration: underline;">Sophie on Board</a>.</p>
         </div>
       </div>
     </div>
@@ -76,13 +77,13 @@ pageDescription: A family looking for experiences — meet Sophie, Mariella, Raf
     <!-- Mariella -->
     <div class="family-member fade-up">
       <div class="family-member-image">
-        <img src="/images/uploads/mother-and-daugther-seeing-each-other.jpg" alt="Mariella" loading="lazy">
+        {% image "/images/uploads/mother-and-daugther-seeing-each-other.jpg", "Mariella" %}
       </div>
       <div>
         <div class="family-member-name">Mariella</div>
-        <div class="family-member-role">Impact brain, mama energy</div>
+        <div class="family-member-role">Impact brain, Mamma energy</div>
         <div class="family-member-text">
-          <p>Italian at heart, and in the kitchen, Mariella is the calm center of the family — protective, deeply humane, and relentlessly effective. With 25 years in the nonprofit world, she designs projects that put dignity first and turn good intentions into real outcomes.</p>
+          <p>Italian at heart, and in the kitchen, Mariella is the calm center of the family, protective, deeply humane, and relentlessly effective. With 25 years in the nonprofit world, she designs projects that put dignity first and turn good intentions into real outcomes.</p>
           <p>She is also co-founder and CEO of <strong>Reality Telling</strong>, bringing impact storytelling into healthcare through immersive experiences that reconnect people with emotion, memory, and place.</p>
         </div>
       </div>
@@ -91,14 +92,14 @@ pageDescription: A family looking for experiences — meet Sophie, Mariella, Raf
     <!-- Rafa -->
     <div class="family-member fade-up">
       <div class="family-member-image">
-        <img src="/images/uploads/rafa-lanus-defender-greece.jpg" alt="Rafa" loading="lazy">
+        {% image "/images/uploads/rafa-lanus-defender-greece.jpg", "Rafa" %}
       </div>
       <div>
         <div class="family-member-name">Rafa</div>
         <div class="family-member-role">The eye, the plan, the story</div>
         <div class="family-member-text">
-          <p>Rafa has spent years moving between very different worlds — high-profile editorial assignments one week, remote field stories the next. His approach is grounded and intentional: strong planning, calm logistics, and an eye for the small moments that make a story feel real.</p>
-          <p>Behind the scenes, he leads an editorial team that helps deliver consistently fast when needed, always with care — so every project lands with polish and heart.</p>
+          <p>Rafa has spent 25+ years moving between very different worlds, high-profile editorial assignments one week, remote field stories the next. His approach is grounded and intentional: strong planning, calm logistics, and an eye for the small moments that make a story feel real.</p>
+          <p>Behind the scenes, he leads an editorial team that helps deliver consistently fast when needed, always with care, so every project lands with polish and heart.</p>
         </div>
       </div>
     </div>
@@ -106,7 +107,7 @@ pageDescription: A family looking for experiences — meet Sophie, Mariella, Raf
     <!-- Padme -->
     <div class="family-member fade-up">
       <div class="family-member-image">
-        <img src="/images/uploads/kings-charles-defender.jpg" alt="Padme" loading="lazy">
+        {% image "/images/uploads/kings-charles-defender.jpg", "Padme" %}
       </div>
       <div>
         <div class="family-member-name">Padme</div>
@@ -124,7 +125,7 @@ pageDescription: A family looking for experiences — meet Sophie, Mariella, Raf
 <section class="cta-band">
   <div class="container">
     <h2>Let's build something<br>worth remembering</h2>
-    <p>We collaborate with destinations, hospitality brands, NGOs, cultural initiatives, and purpose-driven projects that want storytelling with depth, beauty, and real-world perspective.</p>
-    <a href="/work-with-us/" class="btn btn-dark">Start a collaboration</a>
+    <p>The best projects usually start with a conversation, not a brief. We love that part most. Our contact page is one click away.</p>
+    <a href="/contact/" class="btn btn-dark">Start a collaboration</a>
   </div>
 </section>

@@ -1,0 +1,15 @@
+# ── www → apex (confirm www vs apex preference before activating)
+# https://www.thedefenderfamily.com/*  https://thedefenderfamily.com/:splat  301!
+
+# ── Staging → production
+# DO NOT ACTIVATE until DNS launch day — activating early causes a redirect loop
+# https://draft.thedefenderfamily.com/*  https://thedefenderfamily.com/:splat  301!
+
+# ── Old WordPress permalinks → new equivalents
+# Populate from Search Console → Coverage → Valid → Export before launch
+# /about-us/      /about/         301
+# /work-with-us/  /work-with-us/  301
+# /blog/          /stories/       301
+# /blog/*         /stories/       301
+# /our-projects/  /projects/      301
+# /contact-us/    /contact/       301

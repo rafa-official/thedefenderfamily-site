@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+title: "Press & Clients — The Defender Family"
+description: "Editorial credits, NGO and brand collaborators, and testimonials from partners we've worked with on travel, documentary, and impact projects."
+ogImage: "/images/og/default-og.jpg"
+ogImageAlt: "Editorial and client credits for The Defender Family"
+permalink: /press/
+priority: "0.8"
+sitemap: false
+---
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/rafa-lanus-photographer-car.jpg'); background-image: image-set(url('/images/uploads/rafa-lanus-photographer-car.webp') type('image/webp'), url('/images/uploads/rafa-lanus-photographer-car.jpg') type('image/jpeg'));"></div>
+  <div class="page-hero-content">
+    <h1>Press &amp; Clients</h1>
+    <p>Publications, collaborators, and what they say</p>
+  </div>
+</section>
+
+<!-- EDITORIAL CREDITS -->
+{% if credits and credits.length %}
+<section style="padding: clamp(3rem, 6vw, 5rem) 0; border-bottom: 1px solid var(--color-faint);">
+  <div class="container">
+    <div class="section-label">As featured in</div>
+    <h2 class="section-heading">Editorial credits</h2>
+    <div class="press-logos">
+      {% for credit in credits %}
+      <a href="{{ credit.url }}" target="_blank" rel="noopener" class="press-logo-item">
+        {% if credit.logo %}<img src="{{ credit.logo }}" alt="{{ credit.publisher }}" loading="lazy">{% else %}<span>{{ credit.publisher }}</span>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- TESTIMONIALS -->
+{% if testimonials and testimonials.length %}
+<section style="padding: clamp(3rem, 6vw, 5rem) 0;">
+  <div class="container">
+    <div class="section-label">From our partners</div>
+    <h2 class="section-heading">What they say</h2>
+    <div class="testimonials-grid">
+      {% for item in testimonials %}
+      <blockquote class="testimonial">
+        <p>"{{ item.quote }}"</p>
+        <footer>
+          <strong>{{ item.name }}</strong>{% if item.title %}, {{ item.title }}{% endif %}
+        </footer>
+      </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if not credits and not testimonials %}
+<!-- Placeholder — remove once content is added -->
+<section style="padding: clamp(4rem, 8vw, 7rem) 0; text-align: center;">
+  <div class="container">
+    <p style="color: var(--color-muted); font-size: 1.1rem;">Content coming soon.</p>
+    <a href="/contact/" class="btn btn-dark" style="margin-top: 2rem;">Get in touch</a>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Let's build something<br>worth remembering</h2>
+    <p>We collaborate with destinations, hospitality brands, NGOs, cultural initiatives, and purpose-driven projects that want storytelling with depth, beauty, and real-world perspective.</p>
+    <a href="/contact/" class="btn btn-dark">Start a collaboration</a>
+  </div>
+</section>

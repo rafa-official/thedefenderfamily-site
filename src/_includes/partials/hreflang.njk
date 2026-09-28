@@ -1,0 +1,15 @@
+{# ── Hreflang — T22 ────────────────────────────────────────────────────────
+   Inert for English-only launch. When Spanish/Italian translations exist,
+   add to the page's front matter:
+     translations:
+       - { lang: "es", url: "/es/about/" }
+       - { lang: "it", url: "/it/about/" }
+     defaultUrl: "/about/"
+   ──────────────────────────────────────────────────────────────────────── #}
+{% if translations %}
+  <link rel="alternate" hreflang="{{ lang or 'en' }}" href="{{ site.url }}{{ page.url }}">
+  {% for translation in translations %}
+  <link rel="alternate" hreflang="{{ translation.lang }}" href="{{ site.url }}{{ translation.url }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ defaultUrl or page.url }}">
+{% endif %}

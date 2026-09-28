@@ -1,0 +1,129 @@
+---
+layout: layouts/base.njk
+title: "The Defender Family — Overlanding y narrativa documental"
+description: "Estudio familiar de storytelling que crea historias cinematográficas de viaje, documentales y de impacto para destinos, marcas hoteleras y de hospitalidad y ONGs. Más de 25 años de fotografía editorial en el camino."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "The Defender Family con su Land Rover Defender en un camino remoto"
+permalink: /es/
+priority: "1.0"
+lang: "es"
+translations:
+  - { lang: "en", url: "/" }
+defaultUrl: "/"
+---
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg hero-bg--video">
+    <video id="hero-video" autoplay muted loop playsinline preload="auto"></video>
+    <script>
+      (function(){
+        var v = document.getElementById('hero-video');
+        var src = window.innerWidth <= 768
+          ? '/images/uploads/hero-mobile.mp4'
+          : '/images/uploads/hero-desktop.mp4';
+        var s = document.createElement('source');
+        s.src = src; s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+      })();
+    </script>
+  </div>
+  <div class="hero-content" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+    <h1>Lugares extraordinarios<br class="mobile-br"> <em>Historias reales</em></h1>
+    <p class="hero-sub" style="text-align: center;">Overlanding en familia. Fotografía documental. VR/360 inmersivo.</p>
+    <a href="/es/trabajemos-juntos/" class="btn">Trabajemos juntos</a>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-inner fade-up">
+      <div class="intro-text">
+        <h2>Un viaje en familia, después otro, y entonces algo encajó</h2>
+        <p>TDF empezó como empiezan casi todas las cosas buenas: como algo que ya estábamos haciendo. Una familia que viaja, documenta y cuenta historias. Rafa con sus cámaras y creatividad. Mariella construyendo proyectos con impacto. Sophie creciendo y descubriendo el mundo en el camino.</p>
+        <p>Con el tiempo entendimos que esas piezas encajaban de una manera natural: los lugares reales a los que llegábamos, las historias que encontrábamos en el camino y el contenido 360/VR que capturábamos podían tener una segunda vida a través de Reality Telling, nuestra empresa de impacto social que trabaja en hospitales y residencias. Viajar, crear acuerdos, producir contenido cinematográfico y llevar experiencias inmersivas a personas que no pueden llegar físicamente a esos lugares dejó de ser una coincidencia y empezó a convertirse en un modelo.</p>
+        <p>De eso se trata ahora: acceso real, presencia real y contenido cinematográfico con una vida que va más allá del viaje: en medios, marcas, instituciones y también en una habitación de hospital.</p>
+        <a href="/es/proyectos/" class="btn btn-dark">Mira cómo trabajamos</a>
+      </div>
+      <div class="intro-image">
+        {% image "/images/uploads/the-defender-family-posing-scotland.jpg", "The Defender Family en la carretera" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars">
+  <div class="container">
+    <div class="section-label">Qué hacemos</div>
+    <h2 class="section-heading">Tres maneras de contar la historia</h2>
+    <div class="pillars-grid">
+      <a class="pillar fade-up" href="/historias/">
+        {% image "/images/uploads/the-defender-family-albania-river.jpg", "Historias de viaje en familia", "lazy", "(max-width: 768px) 100vw, 33vw", "pillar-img" %}
+        <div class="pillar-num">01 — Familia viajera</div>
+        <h3>Storytelling de viajes y destinos</h3>
+        <p>Para oficinas de turismo, parques nacionales y marcas hoteleras y de hospitalidad que necesitan contenido de viaje con textura real. Nos integramos de verdad, nos quedamos el tiempo suficiente para encontrar la historia y entregamos fotos y videos cinematográfico que se siente vivido porque lo fue.</p>
+      </a>
+      <a class="pillar fade-up" href="/es/rafa-lanus/">
+        {% image "/images/uploads/bolivian-man-by-rafa-lanus.jpg", "Narrativa documental de impacto", "lazy", "(max-width: 768px) 100vw, 33vw", "pillar-img" %}
+        <div class="pillar-num">02 — Fotografía</div>
+        <h3>Fotografía editorial y documental</h3>
+        <p>Para medios, instituciones culturales y ONGs que necesitan fotografía en terreno con profundidad y sensibilidad institucional. Del retrato a las secuencias documentales, disponible para encargos y licenciamiento editorial.</p>
+      </a>
+      <a class="pillar fade-up" href="/es/proyectos/">
+        {% image "/images/uploads/woman-swimming-underwater.jpg", "Experiencias inmersivas", "lazy", "(max-width: 768px) 100vw, 33vw", "pillar-img" %}
+        <div class="pillar-num">03 — Historias con impacto</div>
+        <h3>Experiencias inmersivas 360/VR</h3>
+        <p>Para destinos y partners del ámbito de la salud que quieren colocar a las personas dentro de una experiencia. Producido a través de Reality Telling, nuestra empresa de impacto social, pensado para uso clínico, programas culturales y participación pública.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED STORIES -->
+<section class="stories">
+  <div class="container">
+    <div class="section-label">Desde el terreno</div>
+    <h2 class="section-heading">Historias destacadas</h2>
+    <p class="stories-sub">Una selección de viajes, momentos documentales e historias de campo que reflejan nuestra forma de trabajar.</p>
+    <div class="stories-grid">
+      {% for post in collections.stories | limit(6) %}
+      <a class="story-card" href="/historias/">
+        {% if post.data.heroImage %}{% image post.data.heroImage, (post.data.heroImageAlt or post.data.title), "lazy", "(max-width: 768px) 100vw, 33vw" %}{% endif %}
+        <div class="story-info">
+          <span>{{ post.data.category }}</span>
+          <h3>{{ post.data.title }}</h3>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="side-section">
+  <div class="container">
+    <div class="side-inner fade-up">
+      <div class="side-image">
+        {% image "/images/uploads/girl-ice-skating-lake.jpg", "La familia" %}
+      </div>
+      <div class="side-text">
+        <h2>No todas las historias se pueden contar desde un escritorio</h2>
+        <p>Somos un estudio de producción en terreno que viaja como familia. Cuando estamos en un lugar extraordinario, una institución cultural, un parque nacional o una comunidad viva, producimos al mismo tiempo historias cinematográficas de viaje, fotografía documental y experiencias inmersivas 360/VR.</p>
+        <p>Una sola operación. Tres resultados. Para destinos, marcas e instituciones que necesitan algo más que una producción estándar.</p>
+        <a href="/es/sobre-nosotros/" class="btn btn-dark">Más sobre nosotros</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Construyamos algo que valga la pena recordar</h2>
+    <p>Si tienes un lugar que vale la pena documentar, una historia que merece más que una cobertura estándar o una institución que nunca fue filmada como corresponde, escríbenos. Ahí suele empezar el mejor trabajo.</p>
+    <a href="/es/contacto/" class="btn btn-dark">Empecemos una colaboración</a>
+  </div>
+</section>

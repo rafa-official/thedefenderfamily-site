@@ -1,16 +1,50 @@
 ---
 layout: layouts/base.njk
-pageTitle: Work with Us
-pageDescription: Collaborations, campaigns, and impact stories — let's build something worth remembering.
+title: "Work with Us — Brand Storytelling & NGO Documentary"
+description: "Collaborations for destinations, hospitality brands, NGOs, and cultural initiatives. Travel storytelling, impact documentation, and 360/VR immersive experiences."
+ogImage: "/images/uploads/the-defender-family-open-graph.jpg"
+ogImageAlt: "The Defender Family at work on location"
 permalink: /work-with-us/
+priority: "0.9"
+lang: "en"
+translations:
+  - { lang: "es", url: "/es/trabajemos-juntos/" }
+defaultUrl: "/work-with-us/"
+faqs:
+  - q: "Do you use AI to generate or manipulate your images?"
+    a: "Absolutely not. Rafa is an editorial photographer first; he works under the photojournalism code of non-manipulation. Every image is a real moment, captured on location. Adjustments are limited to what could be done in a traditional darkroom: exposure, contrast, color balance, dodging, burning. Nothing is added, removed, or generated. If you need our work for editorial use, you can rely on it being authentic."
+
+  - q: "Do you travel internationally for projects?"
+    a: "Yes, we're based in Barcelona but routinely work across Europe, Latin America, California, and beyond. Our overlanding setup means we can reach locations standard production crews can't access on short notice. That said, it doesn't always have to involve the Defender. For many NGO projects we've travelled light: the whole family, just Rafa, or just Mariella, depending on what the assignment needs."
+
+  - q: "Do you shoot video as well as stills?"
+    a: "Photography is Rafa's main medium and our first love, but yes, we do video too. Rafa actually trained as a film director, so the moving image isn't a side hustle for us. We also handle immersive 360/VR through our Reality Telling work. Tell us what you need and we'll tell you the right format for it."
+
+  - q: "Can we license existing images from your expeditions?"
+    a: "Yes. Image licensing is Rafa's world actually, he runs a photo agency and licenses images for a living. Get in touch with what you have in mind and we'll figure it out."
+
+  - q: "Do you work with NGOs at adjusted rates?"
+    a: "We do. Our nonprofit work is core to what we do, and Mariella brings deep expertise from the NGO world: project writing, identifying funding from public and private calls, and structuring proposals that get backed. So we can often help shape the funding side as well as the storytelling. Reach out and let's talk scope and budget."
+
+  - q: "How does the Reality Telling 360/VR service work?"
+    a: "We capture immersive 360-degree footage on location and produce VR-ready experiences for healthcare, cultural, and impact contexts. The story behind it: before The Defender Family, this was a side family project. We started experimenting with 360 content, and it grew into a big part of Reality Telling because patients respond so strongly to immersive experiences. That response is what led us to create the dedicated Travel section, Moments, and of course <a href=\"/sophie-on-board/\" style=\"color: var(--color-warm-dark); text-decoration: underline;\">Sophie on Board</a>, curated specifically for kids. Best discussed on a call given the production specifics."
+
+  - q: "Are you interested in collaborations with brands?"
+    a: "If we're the right fit for each other, absolutely. We're not the right partner for everyone, and that's the point, collaborations work when the brand and the story belong to the same world."
+
+  - q: "Can we buy prints?"
+    a: "Of course. Reach out with the image you have in mind and we'll quote you on size, paper, and edition."
+
+  - q: "What's your minimum project scope?"
+    a: "We don't have a hard minimum, but most engagements start at multi-day field shoots. For single-day editorial assignments, get in touch and we'll tell you if we're the right fit."
 ---
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg" style="background-image: url('/images/uploads/overlander-digital-nomads-with-a-land-rover-defender_003.jpg')"></div>
+  <div class="page-hero-bg" style="background-image: url('/images/uploads/overlander-digital-nomads-with-a-land-rover-defender_003.jpg'); background-image: image-set(url('/images/uploads/overlander-digital-nomads-with-a-land-rover-defender_003.webp') type('image/webp'), url('/images/uploads/overlander-digital-nomads-with-a-land-rover-defender_003.jpg') type('image/jpeg'));"></div>
   <div class="page-hero-content">
     <h1>Let's build something worth remembering</h1>
-    <p>Collaborations, campaigns, and impact stories</p>
+    <p>Commissions, access partnerships, and brand collaborations</p>
   </div>
 </section>
 
@@ -19,11 +53,14 @@ permalink: /work-with-us/
   <div class="container">
     <div class="side-inner fade-up">
       <div class="side-text">
-        <p>We're a family-led storytelling studio combining 25+ years of professional photography, 25 years of nonprofit leadership, and immersive 360/VR experiences that bring people to places they can't reach — especially in healthcare settings.</p>
-        <p>We work with destinations, hospitality brands, NGOs, cultural initiatives, and purpose-driven projects that want storytelling with depth, beauty, and real-world perspective.</p>
+        <h2 class="side-heading">Not every collaboration starts with a budget</h2>
+        <p>We work best when the brief has room to breathe and the access is real.
+That might mean a commission, a destination, institution, or brand that needs documentary-quality content and wants a production team that can actually get inside the story. Or it might mean access: a remarkable place that doesn't have a production budget but has something worth documenting.</p>
+        <p>We've built work both ways, and some of our best projects started with an open door rather than a signed contract.
+Either way, the conversation starts the same: tell us what you have, and we'll tell you honestly if there's a fit.</p>
       </div>
       <div class="side-image">
-        <img src="/images/uploads/scotland-trip-the-defender-family_009.jpg" alt="Working on location" loading="lazy">
+        {% image "/images/uploads/scotland-trip-the-defender-family_009.jpg", "Working on location" %}
       </div>
     </div>
   </div>
@@ -35,39 +72,76 @@ permalink: /work-with-us/
     <div class="section-label">What we offer</div>
     <h2 class="section-heading">How we can work together</h2>
     <div class="services-grid">
-      <a href="/expeditions/" class="service-card-link">
+      <a href="/stories/" class="service-card-link">
         <div class="service-card fade-up">
-          <img src="/images/uploads/girl-wearing-patagonia-cap-in-a-car.jpg" alt="Travel storytelling" loading="lazy">
+          {% image "/images/uploads/girl-wearing-patagonia-cap-in-a-car.jpg", "Travel storytelling", "lazy", "(max-width: 768px) 100vw, 33vw" %}
           <div class="service-card-num">01</div>
-          <h3>Travel and destination storytelling</h3>
-          <p>Cinematic photo and video that feels real, not staged — built for brands, tourism boards, and experiences.</p>
+          <h3>Travel and Destination Storytelling</h3>
+          <p>For tourism boards, national parks, cultural institutions, and hospitality brands that need content built from real access. We arrange the logistics, embed properly, and deliver cinematic photo and video that serves editorial, marketing, and archive needs simultaneously. If you have a place with a real story in it, this is where we start.</p>
         </div>
       </a>
       <a href="/rafa-lanus/" class="service-card-link">
         <div class="service-card fade-up">
-          <img src="/images/uploads/rafa-lanus-photo-guatemala.jpg" alt="Impact documentation" loading="lazy">
+          {% image "/images/uploads/rafa-lanus-photo-guatemala.jpg", "Impact documentation", "lazy", "(max-width: 768px) 100vw, 33vw" %}
           <div class="service-card-num">02</div>
-          <h3>Impact and NGO documentation</h3>
-          <p>Field-ready storytelling with purpose: projects, communities, donors, and outcomes told with dignity.</p>
+          <h3>Impact and NGO Documentation</h3>
+          <p>For organisations doing work that matters in places that are hard to reach or hard to film with sensitivity. We have 25 years of NGO field experience between us, in prisons, hospitals, community projects, and cultural foundations. We know how to earn access, how to work inside institutions, and how to tell difficult stories with dignity.</p>
         </div>
       </a>
       <a href="https://www.realitytelling.com/" class="service-card-link" target="_blank" rel="noopener noreferrer">
         <div class="service-card fade-up">
-          <img src="/images/uploads/camera_RT.jpg" alt="Immersive experiences" loading="lazy">
+          {% image "/images/uploads/camera_RT.jpg", "Immersive experiences", "lazy", "(max-width: 768px) 100vw, 33vw" %}
           <div class="service-card-num">03</div>
           <h3>Immersive 360/VR experiences</h3>
-          <p>Help patients and older adults reconnect with emotion, memory, and the world beyond their walls. Through <a href="https://www.realitytelling.com/" target="_blank" rel="noopener noreferrer" style="color: var(--color-warm-dark); text-decoration: underline;">Reality Telling</a>.</p>
+          <p>For destinations and healthcare partners that want a second deliverable from the same field operation. Through our social company, we produce therapeutic 360/VR experiences including pre-surgery anxiety, elderly care and mental health, as well as immersive content for cultural institutions and public engagement. One trip, two outputs, two clients. Check <span style="color: var(--color-warm-dark); text-decoration: underline;">Reality Telling</span></p>
         </div>
       </a>
     </div>
   </div>
 </section>
 
+<!-- FAQ (T21) -->
+{% if faqs %}
+<section class="faq-section">
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2 class="section-heading">Frequently asked questions</h2>
+    <div class="faq-list">
+      {% for item in faqs %}
+      <details class="faq-item">
+        <summary class="faq-question">{{ item.q }}</summary>
+        <div class="faq-answer">{{ item.a | safe }}</div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in faqs %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | dump | safe }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | striptags | dump | safe }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endif %}
+
 <!-- CTA -->
 <section class="cta-band">
   <div class="container">
     <h2>Ready to start?</h2>
-    <p>Tell us about your project, your destination, or your idea. We'll figure out the best way to bring it to life together.</p>
+    <p>Tell us about your place, your project, or your idea, even if it's early. We don't need a finished brief to start a conversation.</p>
     <a href="/contact/" class="btn btn-dark">Get in touch</a>
   </div>
 </section>
