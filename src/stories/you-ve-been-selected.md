@@ -21,7 +21,7 @@ As a kid in the early 90s, I had Camel Trophy posters covering my bedroom walls.
 
 Life taught me otherwise.
 
-![camel trophy poster boy in the 90s](/images/uploads/camel-trophy-poster-90.jpg)
+![camel trophy poster boy in the 90s](/images/uploads/camel-trophy-poster-90.webp)
 
 The Defender Family was never built to chase followers or fame. It started with a family, an old Defender, a camera, and a curiosity for the world.
 
