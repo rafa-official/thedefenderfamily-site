@@ -82,8 +82,9 @@ Notes on fields and values:
 
 ## 7. Media in git
 
-- **Tracked:** `src/images/uploads/hero-mobile.mp4` (7.2 MB) and `src/images/uploads/Trophy VR.mp4` (3.7 MB).
-- **Not tracked, not in `src/`:** `hero-desktop.mp4` (22 MB), `the-defender-family-open-graph.jpg` and `the-defender-family-front-runner-chairs.jpg`. They exist only in `_site/images/uploads/`, and the site references all three (homepage desktop hero, default OG image, story-card fallback). A fresh clone plus build will not recreate them. Copy them into `src/images/uploads/` and commit them.
+- **Tracked in git, in `src/images/uploads/`:** `hero-desktop.mp4` (22 MB), `hero-mobile.mp4` (7.2 MB), `Trophy VR.mp4` (3.7 MB), `the-defender-family-open-graph.jpg` (default OG image) and `the-defender-family-front-runner-chairs.jpg` (story-card fallback).
+- `hero-desktop.mp4`, the OG image and the chairs image were untracked until 2026-09-28, when they were copied from `_site/` into `src/` and committed. A fresh clone plus build now recreates them.
+- GitHub rejects files over 100 MB and warns above 50 MB. The largest video is 22 MB, so there is room, but a new hero video near 50 MB would need Git LFS or hosting elsewhere.
 
 ## 8. Deployment
 
@@ -100,7 +101,7 @@ Deployment is manual and separate from git: build, then upload `_site/` to the h
 > - `.htaccess` (confirm the live copy has no host-added rules beyond `src/.htaccess`)
 > - `.well-known/` (SSL and domain validation; not in this repo)
 > - any subdomain folders (for example a `draft` folder)
-> - any files uploaded by hand that are not in `_site/` (see the three files in section 7)
+> - any files uploaded by hand that are not in `_site/` (the three media files that used to be in this category are now in `src/`, but other hand-uploaded files may exist)
 > - anything the host created itself (for example `cgi-bin`)
 >
 > Prefer Synchronize over Mirror, and read the deletion list before you confirm.
